@@ -512,13 +512,19 @@
                Send Mail
             </button>
 
+            <button mat-raised-button color="warn" class="grey-btn" (click)="sendMail()"
+               *ngIf="purchaseOrder.verify!=null && (purchaseOrder.approvalStatus == 'APPROVED' || purchaseOrder.approvalStatus == 'APPROVED & EMAIL SENT') && purchaseOrder.mailSentDate!=null" [disabled]="true">
+               <mat-icon>send</mat-icon>
+              Mail Sended
+            </button>
+
             <button mat-raised-button color="warn" class="green-btn" (click)="verifyPo()"
                *ngIf="purchaseOrder.verify==null && purchaseOrder.approvalStatus=='APPROVED'">
                <mat-icon>verified_user</mat-icon>
                Verify
             </button>
             <button mat-raised-button color="warn" class="green-btn"
-               *ngIf="purchaseOrder.verify!=null && purchaseOrder.approvalStatus=='APPROVED'" [disabled]="true">
+            *ngIf="purchaseOrder.verify != null && (purchaseOrder.approvalStatus == 'APPROVED' || purchaseOrder.approvalStatus == 'APPROVED & EMAIL SENT')" [disabled]="true">
                <mat-icon>verified_user</mat-icon>
                Verified
             </button> 

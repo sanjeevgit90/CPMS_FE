@@ -213,7 +213,7 @@
 
                                             <a mat-menu-item
                                                 [routerLink]="['uploadSignCopy', POListData.entityId,'view']"
-                                                *ngIf="POListData.approvalStatus=='APPROVED'  && poEdit">
+                                                *ngIf="(POListData.approvalStatus == 'APPROVED' || POListData.approvalStatus == 'APPROVED & EMAIL SENT') && poEdit">
                                                 <mat-icon aria-hidden="false">attach_file</mat-icon> Upload signed copy
                                             </a>
                                             <button mat-menu-item (click)="deletePo(POListData.entityId)"
@@ -240,7 +240,7 @@
                                             </a>
                                             <a mat-menu-item
                                                 [routerLink]="['searchPoFulfilment', POListData.entityId,'list']"
-                                                *ngIf="POListData.approvalStatus=='APPROVED' && poEdit">
+                                                *ngIf="(POListData.approvalStatus == 'APPROVED' || POListData.approvalStatus == 'APPROVED & EMAIL SENT') && poEdit">
                                                 <mat-icon aria-hidden="false">payment</mat-icon> PO Fulfilment
                                             </a>
                                             <a mat-menu-item
@@ -258,12 +258,14 @@
 
                                             <button mat-menu-item data-toggle="modal" data-target="#myModal"
                                                 (click)="getPoId(POListData.entityId)"
-                                                *ngIf="POListData.approvalStatus=='APPROVED' && poEdit">
+                                                *ngIf="(POListData.approvalStatus == 'APPROVED' || POListData.approvalStatus == 'APPROVED & EMAIL SENT') && poEdit">
                                                 <mat-icon aria-hidden="false">settings</mat-icon> Request for amendment
                                             </button>
 
                                             <button mat-menu-item (click)="pushPoToOpenBravo(POListData.entityId)"
-                                                *ngIf="POListData.approvalStatus=='APPROVED' && POListData.poPushedStatus=='PENDING' && poEdit">
+                                            *ngIf="(POListData.approvalStatus == 'APPROVED' || POListData.approvalStatus == 'APPROVED & EMAIL SENT') 
+                                            && POListData.poPushedStatus == 'PENDING' && poEdit">
+                                     
                                                 <mat-icon aria-hidden="false">launch</mat-icon> Push PO
                                             </button>
                                         </mat-menu>
