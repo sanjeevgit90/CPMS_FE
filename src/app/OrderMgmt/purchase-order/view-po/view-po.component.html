@@ -501,11 +501,11 @@
                <mat-icon>history</mat-icon>
                Workflow History
             </button>
-            <button mat-raised-button color="warn" class="red-btn"
+            <!-- <button mat-raised-button color="warn" class="red-btn"
                [routerLink]="['/searchPurchaseOrder/searchVendorComparison', purchaseOrder.entityId,'list']">
                <mat-icon>compare_arrows</mat-icon>
                Vendor Comparison
-            </button>
+            </button> -->
 
 
             <button mat-raised-button color="warn" class="blue-btn"
@@ -521,7 +521,7 @@
                Send Mail
             </button>
 
-            <button mat-raised-button color="warn" class="grey-btn" (click)="sendMail()"
+            <button mat-raised-button color="warn" class="grey-btn"
                *ngIf="purchaseOrder.verify!=null && (purchaseOrder.approvalStatus == 'APPROVED' || purchaseOrder.approvalStatus == 'APPROVED & EMAIL SENT') && purchaseOrder.mailSentDate!=null" [disabled]="true">
                <mat-icon>send</mat-icon>
               Mail Sended
