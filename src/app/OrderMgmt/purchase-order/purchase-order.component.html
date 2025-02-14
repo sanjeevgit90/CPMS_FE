@@ -228,11 +228,12 @@
                                                 Duplicate
                                             </button>
 
-                                            <!-- <button mat-menu-item
+                                             <button mat-menu-item
                                                 (click)="generateDuplicateOrder(POListData.entityId, 'AMEND')"
                                                 *ngIf="POListData.approvalStatus=='AMENDMENT_APPROVED' && POListData.amendedPoId==null && poEdit">
                                                 <mat-icon aria-hidden="false">edit_attributes</mat-icon> Amend
                                             </button>
+                                            <!--
                                             <a mat-menu-item
                                             *ngIf="poEdit"
                                                 [routerLink]="['searchPoPayment', POListData.entityId,'list']">
@@ -256,11 +257,11 @@
                                                 <mat-icon aria-hidden="false">settings</mat-icon> Request for amendment
                                         </button> -->
 
-                                            <!-- <button mat-menu-item data-toggle="modal" data-target="#myModal"
+                                            <button mat-menu-item data-toggle="modal" data-target="#myModal"
                                                 (click)="getPoId(POListData.entityId)"
                                                 *ngIf="(POListData.approvalStatus == 'APPROVED' || POListData.approvalStatus == 'APPROVED & EMAIL SENT') && poEdit">
                                                 <mat-icon aria-hidden="false">settings</mat-icon> Request for amendment
-                                            </button> -->
+                                            </button>
 
                                             <!-- <button mat-menu-item (click)="pushPoToOpenBravo(POListData.entityId)"
                                             *ngIf="(POListData.approvalStatus == 'APPROVED' || POListData.approvalStatus == 'APPROVED & EMAIL SENT') 
