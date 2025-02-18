@@ -6,15 +6,15 @@ export class AppGlobals {
     // readonly baseAPIUrl: string = 'http://103.11.155.191:8091/ipms/';
     // readonly baseUrl: string = 'http://103.11.155.191:8091/upsrtc/';
 
-    // readonly baseAPIUrl: string = 'https://cpms.aurionpro.com:8038/ipms/'; // Production CPMS Deployment
-    // readonly baseUrl: string = 'https://cpms.aurionpro.com/';
+    readonly baseAPIUrl: string = 'https://cpms.aurionpro.com:8038/ipms/'; // Production CPMS Deployment
+    readonly baseUrl: string = 'https://cpms.aurionpro.com/';
 
 
     //LOCAL CPMS
-readonly baseAPIUrl: string = 'http://localhost:8095/';
-readonly baseUrl: string = 'http://localhost:4200/';
-	
-    
+// readonly baseAPIUrl: string = 'http://localhost:8095/';
+// readonly baseUrl: string = 'http://localhost:4200/';
+
+
 // http://172.16.3.171:8038/ipms
 
     // http://172.16.3.171
