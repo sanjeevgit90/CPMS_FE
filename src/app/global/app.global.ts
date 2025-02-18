@@ -6,8 +6,8 @@ export class AppGlobals {
     // readonly baseAPIUrl: string = 'http://103.11.155.191:8091/ipms/';
     // readonly baseUrl: string = 'http://103.11.155.191:8091/upsrtc/';
 
-    readonly baseAPIUrl: string = 'https://cpms.aurionpro.com:8038/ipms/'; // Production CPMS Deployment
-    readonly baseUrl: string = 'https://cpms.aurionpro.com/';
+    readonly baseAPIUrl: string = 'https://cpms.aurionpro.com:8039/ipms/'; // Production CPMS Deployment
+    readonly baseUrl: string = 'https://cpms.aurionpro.com/uat';
 
 
     //LOCAL CPMS
