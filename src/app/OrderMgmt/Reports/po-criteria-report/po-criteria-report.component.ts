@@ -22,7 +22,7 @@ export class PoCriteriaReportComponent implements OnInit {
     private _global: AppGlobals, private dialogService: DialogService, private sharedService: SharedService
   ) { }
 
-  displayedColumns: string[] = ['purchaseOrderNo', 'accName', 'suppName', 'buyName' ,'grandTotal', 'currency', 'approvalStatus', 'createdDate'];
+  displayedColumns: string[] = ['purchaseOrderNo', 'accName', 'departmentName', 'suppName', 'buyName' ,'grandTotal', 'currency', 'approvalStatus', 'createdDate'];
   PoCriteriaData: MatTableDataSource<any>;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -44,7 +44,7 @@ export class PoCriteriaReportComponent implements OnInit {
   };
 
   FilterData = {
-    
+
   };
     // Search function
     search = function () {
@@ -107,7 +107,7 @@ export class PoCriteriaReportComponent implements OnInit {
         this.dialogService.openConfirmDialog(errStr)
       });
     }
-  
+
   // category List
   categoryList:any = [];
   getActiveCategory = function () {
@@ -154,8 +154,8 @@ export class PoCriteriaReportComponent implements OnInit {
       const errStr = error.message;
       this.dialogService.openConfirmDialog(errStr)
     });
-  }  
-  
+  }
+
   // projectList
   projectList:any = [];
   getProjectList = function () {
@@ -193,4 +193,4 @@ export class PoCriteriaReportComponent implements OnInit {
     }
     get formControls() { return this.addPoCriteriaForm.controls; }
   }
-  
+

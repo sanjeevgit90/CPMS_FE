@@ -155,7 +155,7 @@
 
                             </div>
 
-
+                            <div class="table-responsive">
                             <table matTableExporter mat-table [dataSource]="PoCriteriaData" matSort
                                 class="mat-elevation-z8" #exporter="matTableExporter">
 
@@ -173,6 +173,13 @@
                                         <div class="block"> {{PoCriteriaData.accName}} </div>
                                         <div class="block"> {{PoCriteriaData.projectPin}} </div>
                                     </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="departmentName">
+                                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Department </th>
+                                  <td mat-cell *matCellDef="let PoCriteriaData">
+                                      <div class="block"> {{PoCriteriaData.departmentName}} </div>
+                                  </td>
                                 </ng-container>
 
 
@@ -226,6 +233,7 @@
                             <mat-paginator [pageSize]="pageSizedisplay" [pageSizeOptions]="itemPerPage"
                                 showFirstLastButtons>
                             </mat-paginator>
+                          </div>
                         </div>
                     </div>
                 </div>
