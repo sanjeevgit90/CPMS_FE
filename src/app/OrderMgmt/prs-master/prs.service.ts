@@ -15,8 +15,12 @@ export class PRSService {
     return this._http.post(url, body, { headers: header });
   }
 
+  updateVerify(body, id) {
+    var url = this._global.baseAPIUrl + 'ipms/prs/updateverify/' + id;
+    return this._http.put(url, body);
+  }
+
   updatePrs(body, header, id) {
-    debugger;
     var url = this._global.baseAPIUrl + 'ipms/prs/updateprs/' + id;
     return this._http.put(url, body, { headers: header });
   }

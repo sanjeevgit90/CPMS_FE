@@ -22,7 +22,7 @@ export class PrsReportComponent implements OnInit {
     private _global: AppGlobals, private dialogService: DialogService, private sharedService: SharedService
   ) { }
 
-  displayedColumns: string[] = ['prsNo','projectPin','purchaseOrderNo','partyName','officelocation','location','invoiceNo','invoiceAmount','paymentDueDate','approvalStatus','totalWithoutTaxes','totalTaxes','poGrandTotalInr','currency'];
+  displayedColumns: string[] = ['prsNo','projectPin','purchaseOrderNo','partyName','officelocation','location','invoiceNo','invoiceAmount','invoiceDate','paymentDueDate','approvalStatus','totalWithoutTaxes','totalTaxes','poGrandTotalInr','currency'];
   PrsReportData: MatTableDataSource<any>;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;

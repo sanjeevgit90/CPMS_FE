@@ -10,7 +10,7 @@ export class DialogService {
   constructor(public dialog: MatDialog) {}
 debugger;
   openConfirmDialog(msg){
-    debugger;
+    // debugger;
     return this.dialog.open(MatConfirmDialogComponent,{
       width:'390px',
       panelClass:'confirm-dialog-container',

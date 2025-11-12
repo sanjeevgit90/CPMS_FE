@@ -199,6 +199,12 @@
                                             <div class="block" style="text-align: right;"> {{PrsReportData.invoiceAmount | number : '1.2-2'}} </div>
                                         </td>
                                     </ng-container>
+                                    <ng-container matColumnDef="invoiceDate">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Date </th>
+                                        <td mat-cell *matCellDef="let PrsReportData">
+                                            <div class="block"> {{PrsReportData.invoiceDate | date : 'dd/MM/yyyy'}} </div>
+                                        </td>
+                                    </ng-container>
                                     <ng-container matColumnDef="paymentDueDate">
                                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Due Date </th>
                                         <td mat-cell *matCellDef="let PrsReportData">
