@@ -139,92 +139,143 @@
                                 </button>
                             </div>
 
+                            <div class="prs-tbl-resp">
+                                <table matTableExporter mat-table [dataSource]="PrsReportData" matSort class="mat-elevation-z8" #exporter="matTableExporter">
 
-                            <table matTableExporter mat-table [dataSource]="PrsReportData" matSort class="mat-elevation-z8" #exporter="matTableExporter">
+
+                                        <ng-container matColumnDef="prsNo">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> PRS No </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.prsNo}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="projectPin">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pin/Project </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.projectPin}} - {{PrsReportData.project}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <!-- <ng-container matColumnDef="prsDate">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> PRS Date </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.prsDate | date : 'dd/MM/yyyy'}} </div>
+                                            </td>
+                                        </ng-container> -->
+                                        <ng-container matColumnDef="purchaseOrderNo">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> PO No. </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.purchaseOrderNumber}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="partyName">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendor </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.partyName}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="invoiceNo">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice No. </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.invoiceNo}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="invoiceAmount">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Amount </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block" style="text-align: right;"> {{PrsReportData.invoiceAmount | number : '1.2-2'}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="paymentDueDate">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Due Date </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.paymentDueDate | date : 'dd/MM/yyyy'}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="approvalStatus">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.approvalStatus}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="totalWithoutTaxes">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Amt w/o Tax </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block" style="text-align: right;"> {{PrsReportData.totalWithoutTaxes | number : '1.2-2'}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="totalTaxes">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Tax </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block" style="text-align: right;"> {{PrsReportData.totalTaxes | number : '1.2-2'}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="poGrandTotalInr">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Total </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block" style="text-align: right;"> {{PrsReportData.poGrandTotalInr | number : '1.2-2'}} </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="currency">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Currency </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block"> {{PrsReportData.currency}} </div>
+                                            </td>
+                                        </ng-container>
+
+                                        <ng-container matColumnDef="action">
+                                            <th mat-header-cell *matHeaderCellDef> Action </th>
+                                            <td mat-cell *matCellDef="let row">
+
+                                                <!-- <div class="prs-action-column">
+                                                    <button mat-flat-button
+                                                            color="primary"
+                                                            class="book-entry"
+                                                            [disabled]="isBookEntryBtnDisabled(row)"
+                                                            (click)="openBookEntryPopup(row)">
+                                                        Book Entry Number
+                                                    </button>
+                                                    <button mat-flat-button
+                                                            color="primary"
+                                                            [disabled]="isPaymentDetailsBtnDisabled(row)"
+                                                            (click)="openPaymentDetailsPopup(row)">
+                                                        Payment Details
+                                                    </button>
+                                                </div> -->
+
+                                                <div class="prs-action-column">
+                                                    <!-- Book Entry -->
+                                                    <button mat-flat-button
+                                                            color="accent"
+                                                            class="book-entry"
+                                                            *ngIf="isBookEntryBtnVisible(row)"
+                                                            (click)="openBookEntryPopup(row)">
+                                                        Book Entry Number
+                                                    </button>
+                                                    <!-- Payment Details -->
+                                                    <button mat-flat-button
+                                                            color="warn"
+                                                            *ngIf="isPaymentDetailsBtnVisible(row)"
+                                                            (click)="openPaymentDetailsPopup(row)">
+                                                        Payment Details
+                                                    </button>
+
+                                                    <!-- Completed State -->
+                                                    <span class="action-complete"
+                                                            *ngIf="isActionCompleted(row)">
+                                                        ✔ Completed
+                                                    </span>
+
+                                                </div>
+
+                                            </td>
+                                        </ng-container>
+                                
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                            </div>
 
 
-                                    <ng-container matColumnDef="prsNo">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PRS No </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.prsNo}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="projectPin">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Pin/Project </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.projectPin}} - {{PrsReportData.project}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <!-- <ng-container matColumnDef="prsDate">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PRS Date </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.prsDate | date : 'dd/MM/yyyy'}} </div>
-                                        </td>
-                                    </ng-container> -->
-                                    <ng-container matColumnDef="purchaseOrderNo">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PO No. </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.purchaseOrderNumber}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="partyName">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendor </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.partyName}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="invoiceNo">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice No. </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.invoiceNo}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="invoiceAmount">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Amount </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block" style="text-align: right;"> {{PrsReportData.invoiceAmount | number : '1.2-2'}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="paymentDueDate">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Due Date </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.paymentDueDate | date : 'dd/MM/yyyy'}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="approvalStatus">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.approvalStatus}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="totalWithoutTaxes">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Amt w/o Tax </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block" style="text-align: right;"> {{PrsReportData.totalWithoutTaxes | number : '1.2-2'}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="totalTaxes">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Tax </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block" style="text-align: right;"> {{PrsReportData.totalTaxes | number : '1.2-2'}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="poGrandTotalInr">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> PO Total </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block" style="text-align: right;"> {{PrsReportData.poGrandTotalInr | number : '1.2-2'}} </div>
-                                        </td>
-                                    </ng-container>
-                                    <ng-container matColumnDef="currency">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Currency </th>
-                                        <td mat-cell *matCellDef="let PrsReportData">
-                                            <div class="block"> {{PrsReportData.currency}} </div>
-                                        </td>
-                                    </ng-container>
-                               
-                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                            </table>
                             <mat-paginator [pageSize]="pageSizedisplay" [pageSizeOptions]="itemPerPage"
                                 showFirstLastButtons>
                             </mat-paginator>

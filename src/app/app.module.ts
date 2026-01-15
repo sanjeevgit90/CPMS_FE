@@ -178,6 +178,9 @@ import { PoFullfillmentReportComponent } from './OrderMgmt/Reports/po-fullfillme
 import { ProjectMappingComponent } from './ProjectMgmt/ProjectMapping/project-mapping.component';
 import { AddProjectMappingComponent } from './ProjectMgmt/ProjectMapping/addprojectMapping/addprojectMapping.component';
 import { CourierDetailsComponent } from './AssetMgmt/DeliveryChallan/courierDetails/courierDetails.component';
+import { BookEntryDialogComponent } from './OrderMgmt/Reports/dialogs/book-entry-dialog/book-entry-dialog.component';
+import { PaymentDetailsDialogComponent } from './OrderMgmt/Reports/dialogs/payment-details-dialog/payment-details-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -313,7 +316,9 @@ import { CourierDetailsComponent } from './AssetMgmt/DeliveryChallan/courierDeta
 
     ProjecttabComponent, PoFullfillmentReportComponent,
     ProjectMappingComponent, AddProjectMappingComponent,
-    CourierDetailsComponent
+    CourierDetailsComponent,
+    BookEntryDialogComponent,
+    PaymentDetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -325,6 +330,7 @@ import { CourierDetailsComponent } from './AssetMgmt/DeliveryChallan/courierDeta
     AppMaterialModule,
     MatDialogModule,
     MatTableExporterModule,
+    MatSnackBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ExceptionhandlerService, AppGlobals],

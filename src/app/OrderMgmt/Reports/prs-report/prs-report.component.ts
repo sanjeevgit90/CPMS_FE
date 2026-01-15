@@ -9,6 +9,10 @@ import { SharedService } from '../../../service/shared.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { BookEntryDialogComponent } from '../dialogs/book-entry-dialog/book-entry-dialog.component';
+import { PaymentDetailsDialogComponent } from '../dialogs/payment-details-dialog/payment-details-dialog.component';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-prs-report',
@@ -19,10 +23,10 @@ import { MatPaginator } from '@angular/material/paginator';
 export class PrsReportComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private http: HttpClient, private poReportsService: PoReportsService,
-    private _global: AppGlobals, private dialogService: DialogService, private sharedService: SharedService
+    private _global: AppGlobals, private dialogService: DialogService, private sharedService: SharedService, private dialog: MatDialog
   ) { }
 
-  displayedColumns: string[] = ['prsNo','projectPin','purchaseOrderNo','partyName','invoiceNo','invoiceAmount','paymentDueDate','approvalStatus','totalWithoutTaxes','totalTaxes','poGrandTotalInr','currency'];
+  displayedColumns: string[] = ['prsNo','projectPin','purchaseOrderNo','partyName','invoiceNo','invoiceAmount','paymentDueDate','approvalStatus','totalWithoutTaxes','totalTaxes','poGrandTotalInr','currency', 'action'];
   PrsReportData: MatTableDataSource<any>;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -35,6 +39,16 @@ export class PrsReportComponent implements OnInit {
   edit = false;
   list = true;
   addPrsReportForm: FormGroup;
+
+  projectId: number | string;
+  fromDate: string;
+  toDate: string;
+
+  prsReportList: any[] = [];
+  prsReportRequestBody: any;
+  header: any;
+  body: any;
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.PrsReportData.filter = filterValue.trim().toLowerCase();
@@ -112,6 +126,117 @@ export class PrsReportComponent implements OnInit {
     });
   }
   
+openBookEntryPopup(row) {
+  const dialogRef = this.dialog.open(BookEntryDialogComponent, {
+    width: '400px',
+    disableClose: true,
+    data: { entityId: row.entityId }
+  });
+
+  dialogRef.afterClosed().subscribe(success => {
+    if (success) {
+      this.loadPrsReport();   // ✅ THIS IS ENOUGH
+    }
+  });
+}
+
+openPaymentDetailsPopup(row) {
+  const dialogRef = this.dialog.open(PaymentDetailsDialogComponent, {
+    width: '450px',
+    disableClose: true,
+    data: { entityId: row.entityId }
+  });
+
+  dialogRef.afterClosed().subscribe(success => {
+    if (success) {
+      this.loadPrsReport();   // ✅ SAME HERE
+    }
+  });
+}
+
+
+
+reloadPrsReport() {
+  this.poReportsService.getPrsReport(this.body, this.header)
+    .subscribe((res: any) => {
+      this.prsReportList = res;
+    });
+}
+
+
+
+loadPrsReport() {
+  this.prsReportRequestBody = {
+    projectId: this.projectId,
+    fromDate: this.fromDate,
+    toDate: this.toDate
+  };
+
+  this.header = new HttpHeaders({
+    'Content-Type': 'application/json'
+  });
+
+  this.poReportsService.getPrsReport(
+    this.prsReportRequestBody,
+    this.header
+  ).subscribe((res: any) => {
+    this.prsReportList = res.data;
+  });
+}
+
+    isBookEntryBtnDisabled(row): boolean {
+      // Disable ONLY after it is saved
+      return !!row?.bookEntryNo && row.bookEntryNo.trim() !== '';
+    }
+
+    isPaymentDetailsBtnDisabled(row): boolean {
+      // Disable ONLY after payment details are saved
+      return !!row?.paymentDoneDate && !!row?.paymentBookEntryNo;
+    }
+
+    // isBookEntryBtnVisible(row): boolean {
+    //   // if (!row) {
+    //   //   return false;
+    //   // }
+    //   return !row.bookEntryNo || row.bookEntryNo.trim() === '';
+    // }
+
+    // isPaymentDetailsBtnVisible(row): boolean {
+    //   return !row?.paymentDoneDate || !row?.paymentBookEntryNo;
+    // }
+
+   isBookEntryBtnVisible(row): boolean {
+      if (!row) {
+        return false;
+      }
+      // Show ONLY if book entry NOT saved
+      return !row.bookEntryNo || row.bookEntryNo.trim() === '';
+    }
+
+    isPaymentDetailsBtnVisible(row): boolean {
+      if (!row) {
+        return false;
+      }
+
+      // Show ONLY after book entry saved
+      if (!row.bookEntryNo || row.bookEntryNo.trim() === '') {
+        return false;
+      }
+
+      // Hide if payment already saved
+      if (row.paymentDoneDate && row.paymentBookEntryNo) {
+        return false;
+      }
+
+      return true;
+    }
+
+    isActionCompleted(row): boolean {
+      return !!row?.bookEntryNo &&
+            !!row?.paymentDoneDate &&
+            !!row?.paymentBookEntryNo;
+    }
+
 
     ngOnInit(): void {
 

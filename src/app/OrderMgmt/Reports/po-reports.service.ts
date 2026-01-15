@@ -67,4 +67,17 @@ export class PoReportsService {
     var url = this._global.baseAPIUrl + 'ipms/grn/getgrnreport';
     return this._http.post(url, body, { headers: header });
   }
+
+    // 🔽🔽🔽 NEW METHODS (PRS Payment Update) 🔽🔽🔽
+    updatePrsBookEntry(body, header) {
+      const url = this._global.baseAPIUrl + 'ipms/prs/payment-update';
+      return this._http.put(url, body, { headers: header });
+    }
+
+    updatePrsPaymentDetails(body, header) {
+      const url = this._global.baseAPIUrl + 'ipms/prs/payment-update';
+      return this._http.put(url, body, { headers: header });
+    }
+    // 🔼🔼🔼 END NEW METHODS 🔼🔼🔼
+
 }

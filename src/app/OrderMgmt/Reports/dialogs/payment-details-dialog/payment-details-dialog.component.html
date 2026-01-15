@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Add Payment Details</h2>
+
+<mat-dialog-content>
+
+  <mat-form-field appearance="outline" style="width:100%">
+    <mat-label>Payment Done Date</mat-label>
+    <input matInput
+           [matDatepicker]="picker"
+           [(ngModel)]="paymentDoneDate"
+           required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" style="width:100%">
+    <mat-label>Payment Book Entry Number</mat-label>
+    <input matInput [(ngModel)]="paymentBookEntryNo" required />
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-flat-button
+          color="primary"
+          [disabled]="!paymentDoneDate || !paymentBookEntryNo || isSubmitting"
+          (click)="submit()">
+    Submit
+  </button>
+</mat-dialog-actions>

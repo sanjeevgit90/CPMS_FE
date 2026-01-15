@@ -8445,3 +8445,49 @@ body {
 	.mat-column-orgRegAddress {width: 100%;}
 	/* .nav-tabs .nav-item:last-child {width: 100%;} */
   }
+
+  .prs-tbl-resp{
+	overflow-x: auto;
+  }
+  .prs-action-column{
+	display: flex;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: column;
+  }
+
+.prs-action-column button {
+    width: 100%;
+}
+.prs-action-column .book-entry{
+	margin-bottom: 8px;
+}
+.prs-action-col{
+	text-align: center !important;
+}
+
+/* SUCCESS SNACKBAR */
+.success-snackbar {
+  background: #2e7d32 !important; /* Material green */
+  color: #ffffff !important;
+}
+
+/* ERROR SNACKBAR */
+.error-snackbar {
+  background: #c62828 !important; /* Material red */
+  color: #ffffff !important;
+}
+
+/* Optional: style action button */
+.success-snackbar .mat-simple-snackbar-action,
+.error-snackbar .mat-simple-snackbar-action {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+
+.action-complete {
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 13px;
+}
