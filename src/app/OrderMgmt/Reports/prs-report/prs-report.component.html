@@ -222,25 +222,38 @@
                                             </td>
                                         </ng-container>
 
+                                        <ng-container matColumnDef="bookEntryNo">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Book Entry No </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                 <div class="block">
+                                                    {{ PrsReportData.bookEntryNo || '—' }}
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="paymentDoneDate">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Done Date </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block">
+                                                    {{
+                                                        PrsReportData.paymentDoneDate
+                                                        ? (PrsReportData.paymentDoneDate | date:'dd/MM/yyyy')
+                                                        : '—'
+                                                    }}
+                                                </div>
+                                            </td>
+                                        </ng-container>
+                                        <ng-container matColumnDef="paymentBookEntryNo">
+                                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Book Entry No </th>
+                                            <td mat-cell *matCellDef="let PrsReportData">
+                                                <div class="block">
+                                                    {{ PrsReportData.paymentBookEntryNo || '—' }}
+                                                </div>
+                                            </td>
+                                        </ng-container>
+
                                         <ng-container matColumnDef="action">
                                             <th mat-header-cell *matHeaderCellDef> Action </th>
                                             <td mat-cell *matCellDef="let row">
-
-                                                <!-- <div class="prs-action-column">
-                                                    <button mat-flat-button
-                                                            color="primary"
-                                                            class="book-entry"
-                                                            [disabled]="isBookEntryBtnDisabled(row)"
-                                                            (click)="openBookEntryPopup(row)">
-                                                        Book Entry Number
-                                                    </button>
-                                                    <button mat-flat-button
-                                                            color="primary"
-                                                            [disabled]="isPaymentDetailsBtnDisabled(row)"
-                                                            (click)="openPaymentDetailsPopup(row)">
-                                                        Payment Details
-                                                    </button>
-                                                </div> -->
 
                                                 <div class="prs-action-column">
                                                     <!-- Book Entry -->

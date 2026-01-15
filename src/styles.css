@@ -8487,7 +8487,8 @@ body {
 
 
 .action-complete {
-  color: #2e7d32;
-  font-weight: 600;
-  font-size: 13px;
+	width: 100%;
+	color: #2e7d32;
+	font-weight: 600;
+	font-size: 13px;
 }
