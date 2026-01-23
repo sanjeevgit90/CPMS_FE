@@ -238,11 +238,16 @@
                 <button mat-flat-button color="primary" (click)="printComponent('table')">
                     <mat-icon>print</mat-icon> Print
                 </button>
-                <!-- <button mat-flat-button color="primary" class="green-btn"
-                    *ngIf="prsTaskId!=null" (click)="takeAction()">
+
+               <button 
+                    mat-raised-button color="warn" class="green-btn"
+                    [disabled]="prs.verify === true"
+                    *ngIf="prs.approvalStatus == 'APPROVED'"
+                    (click)="onVerifyClick(prs)">
                     <mat-icon>verified_user</mat-icon>
-                    Approve/Reject
-                </button> -->
+                    {{ prs.verify ? 'Verified' : 'Verify' }}
+                </button>
+
                 <button mat-flat-button color="warn" (click)="back()">
                     <mat-icon>chevron_left</mat-icon>
                     Back

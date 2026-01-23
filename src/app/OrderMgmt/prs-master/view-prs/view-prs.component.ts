@@ -5,6 +5,7 @@ import { AppGlobals } from '../../../global/app.global';
 import { DialogService } from '../../../service/dialog.service';
 import { SharedService } from '../../../service/shared.service';
 import { PRSService } from '../prs.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-view-prs',
@@ -27,7 +28,7 @@ export class ViewPRSComponent implements OnInit {
     "invoiceDate": "", "invoiceAmount": "", "paymentDueDate": "", "description": "", "note": "",
     "department": "", "project": "", "approvalStatus": "", "location": "", "requestedBy": "",
     "approvedBy": "", "signature": "", "checklist": "", "quotation": "", "poCopy": "", "checkedInvoiceCopy": "",
-    "approval": "", "supportingDocuments": "", "invoiceFileUpload": "", "grnNo": "",
+    "approval": "", "verify": false, "supportingDocuments": "", "invoiceFileUpload": "", "grnNo": "",
     "isUtilityPayment": "", "office": "", "billType": "", "billNo": "", "attachedBill": "", "entityId": null,
     "attachments":[]
   };
@@ -106,6 +107,38 @@ export class ViewPRSComponent implements OnInit {
       this.dialogService.openConfirmDialog(errStr)
     });
   }
+
+  onVerifyClick(prs: any) {
+    this.dialogService.openConfirmDialog("Are you sure you want to verify this PRS?")
+      .afterClosed().subscribe(result => {
+        if (result) { // User clicked OK/Yes
+          this.verifyPrs(prs);
+        }
+      });
+  }
+
+verifyPrs(prs: any) {
+  this.showLoading = true;
+  const body = { verify: true };
+
+  this.prsService.updateVerify(body, prs.entityId).subscribe({
+    next: (resp: any) => {
+      this.showLoading = false;
+      this.dialogService.openConfirmDialog("PRS verified successfully.")
+        .afterClosed().subscribe(() => {
+          prs.verify = true; // update UI directly
+        });
+    },
+    error: (error: any) => {
+      this.showLoading = false;
+      const errStr = error?.error?.errorDetail?.[0] || "Something went wrong.";
+      this.dialogService.openConfirmDialog(errStr);
+    }
+  });
+}
+
+  
+
 /*
   lessThan = function(value) {
     let name = value;

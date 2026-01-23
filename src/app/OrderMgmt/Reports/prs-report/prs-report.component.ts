@@ -26,7 +26,7 @@ export class PrsReportComponent implements OnInit {
     private _global: AppGlobals, private dialogService: DialogService, private sharedService: SharedService, private dialog: MatDialog
   ) { }
 
-  displayedColumns: string[] = ['prsNo','projectPin','purchaseOrderNo','partyName','invoiceNo','invoiceAmount','paymentDueDate','approvalStatus','totalWithoutTaxes','totalTaxes','poGrandTotalInr','currency', 'bookEntryNo', 
+  displayedColumns: string[] = ['prsNo','projectPin','purchaseOrderNo','partyName', 'officelocation','location', 'invoiceNo','invoiceAmount','paymentDueDate','approvalStatus','totalWithoutTaxes','totalTaxes','poGrandTotalInr','currency', 'bookEntryNo', 
     'paymentDoneDate','paymentBookEntryNo','action'
   ];
   PrsReportData: MatTableDataSource<any>;
