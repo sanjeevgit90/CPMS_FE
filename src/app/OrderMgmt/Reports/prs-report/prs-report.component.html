@@ -173,6 +173,19 @@
                                                 <div class="block"> {{PrsReportData.partyName}} </div>
                                             </td>
                                         </ng-container>
+                                         <ng-container matColumnDef="officelocation">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Office Location </th>
+                                        <td mat-cell *matCellDef="let PrsReportData">
+                                            <div class="block"> {{PrsReportData.office}} </div>
+                                        </td>
+                                    </ng-container>
+                                     <ng-container matColumnDef="location">
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header>  Location </th>
+                                        <td mat-cell *matCellDef="let PrsReportData">
+                                            <div class="block"> {{PrsReportData.location}} </div>
+                                        </td>
+                                    </ng-container> 
+
                                         <ng-container matColumnDef="invoiceNo">
                                             <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice No. </th>
                                             <td mat-cell *matCellDef="let PrsReportData">
@@ -288,7 +301,7 @@
                                 </table>
                             </div>
 
-
+                                <table>
                                     <ng-container matColumnDef="prsNo">
                                         <th mat-header-cell *matHeaderCellDef mat-sort-header> PRS No </th>
                                         <td mat-cell *matCellDef="let PrsReportData">
@@ -321,7 +334,7 @@
                                     </ng-container>
 
                                     <ng-container matColumnDef="officelocation">
-                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Offfice Location </th>
+                                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Office Location </th>
                                         <td mat-cell *matCellDef="let PrsReportData">
                                             <div class="block"> {{PrsReportData.office}} </div>
                                         </td>
