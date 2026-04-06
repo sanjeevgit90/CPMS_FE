@@ -47,6 +47,11 @@
                       <span *ngIf="purchaseOrder.approvalStatus!='APPROVED'"
                   class="draft">
                   DRAFT </span> -->
+
+                  <div class="letterhead-logo pb-2" style="text-align: right;" *ngIf="purchaseOrder.approvalStatus=='APPROVED' || purchaseOrder.approvalStatus=='APPROVED & EMAIL SENT'">
+                     <img src="{{letterHeadLogoPath}}" alt="Aurionpro Solutions" height="90">
+                  </div>
+
                   <span *ngIf="purchaseOrder.approvalStatus!='APPROVED' && purchaseOrder.approvalStatus!='APPROVED & EMAIL SENT'" class="draft">
                      DRAFT 
                  </span> 
@@ -491,6 +496,49 @@
                      </td>
                   </tr>
                </tbody>
+            </table>
+
+            <table class="w-100 text-left" width="100%" cell-padding="0" cell-spacing="0" *ngIf="purchaseOrder.approvalStatus=='APPROVED' || purchaseOrder.approvalStatus=='APPROVED & EMAIL SENT'">
+               <tr>
+                  <td>
+                     <hr class="hr" style="border-top: 1px solid #30cfd2;">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <table width="100%" cell-padding="0" cell-spacing="0">
+                        <tr>
+                           <td width="55%">
+                              <span><strong>Aurionpro Solutions Limited</strong></span> <br>
+                              <span>Synergia IT Park, Plot No. R-270, T.T.C. Industrial Estate, Rabale,</span> <br>
+                              <span>Navi Mumbai - 400 701  MAHARASHTRA - INDIA.</span>
+                           </td>
+                           <td width="20%" class="text-left">
+                              <span>&#9742; +91-22-4040 7070 <div class="clearfix"></div></span>
+                              <span>&#9742; +91-22-4040 7080 <div class="clearfix"></div></span>
+                           </td>
+                           <td width="2%" style="border-left:  1px solid #30cfd2;">&nbsp;</td>
+                           <td width="23%">
+                              <span style="text-align: left; display: block;">&#9993; info@aurionpro.com <div class="clearfix"></div></span>
+                              <span style="text-align: left; display: block;"> <span style="color: black;">🌐</span> www.aurionpro.com <div class="clearfix"></div></span>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <hr class="hr" style="border-top: 1px solid #30cfd2;">
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <span>CIN L99999MH1997PLC111637</span>
+                  </td>
+               </tr>
+               <tr>
+                  <td>&nbsp;</td>
+               </tr>
             </table>
          </div>
 
