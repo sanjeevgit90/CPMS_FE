@@ -11,8 +11,8 @@ export class AppGlobals {
 
 
     //LOCAL CPMS
-    // readonly baseAPIUrl: string = 'http://localhost:8096/';
-    // readonly baseUrl: string = 'http://localhost:4201/';
+    // readonly baseAPIUrl: string = 'http://localhost:8095/';
+    // readonly baseUrl: string = 'http://localhost:4200/';
 
 
 // http://172.16.3.171:8038/ipms
