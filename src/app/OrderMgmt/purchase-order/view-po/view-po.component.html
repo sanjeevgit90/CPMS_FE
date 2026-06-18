@@ -49,7 +49,7 @@
                   DRAFT </span> -->
 
                   <div class="letterhead-logo pb-2" style="text-align: right;" *ngIf="purchaseOrder.approvalStatus=='APPROVED' || purchaseOrder.approvalStatus=='APPROVED & EMAIL SENT'">
-                     <img src="{{letterHeadLogoPath}}" alt="Aurionpro Solutions" height="90">
+                     <img src="{{letterHeadLogoPath}}" alt="Aurionpro Solutions" height="80">
                   </div>
 
                   <span *ngIf="purchaseOrder.approvalStatus!='APPROVED' && purchaseOrder.approvalStatus!='APPROVED & EMAIL SENT'" class="draft">
