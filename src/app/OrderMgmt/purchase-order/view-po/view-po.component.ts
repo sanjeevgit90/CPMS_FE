@@ -17,6 +17,8 @@ export class ViewPoComponent implements OnInit {
     private _global: AppGlobals, private dialogService: DialogService, private sharedService: SharedService) { }
 
   showLoading: boolean = false;
+  letterHeadLogoPath = this._global.baseUrl + 'assets/Images/letterhead/AurionPro-logo1.png';
+  
   /* purchaseOrder = {"purchaseOrderNo": "", "orderDate": "", "poMadeFrom": "",
   "rateContractId": "", "department": "", "accountName": "",
   "organisationId": "", "orderType": "", "modeOfPayment": "",
@@ -294,6 +296,7 @@ export class ViewPoComponent implements OnInit {
   // }
 
   printComponent(cmpName): void {
+    debugger;
     let printContents, popupWin;
     printContents = document.getElementById(cmpName).innerHTML;
     popupWin = window.open('', '_blank', 'top=0,left=0,height=auto,width=auto');
